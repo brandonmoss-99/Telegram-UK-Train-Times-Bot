@@ -22,10 +22,12 @@ See also `python3 bot.py --help`.
 Required:
 
 `-t` or `--bottoken`: Telegram Bot token to use for connection to the API.
+
 `-r` or `--railtoken`: National Rail token to use for connection to the API.
 
 Optional:
 `-n` or `--next`: Max number of trains to fetch per update [1-10]
+
 `--help`: Display help
 
 ## Compatibility
