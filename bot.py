@@ -313,7 +313,7 @@ def parseResponseNotices(data):
 
 				textResponse += urllib.parse.quote(messageText)
 
-			return "<b>Notices at " + data[1].locationName + "</b>%0A--------------------------------" + textResponse
+			return "<b>Notices at " + data[1].locationName + "</b>%0A--------------------------------%0A" + textResponse
 		except:
 			return "Error parsing station messages!"
 
