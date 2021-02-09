@@ -232,8 +232,8 @@ def parseResponseTimes(data):
 		try:
 			services = data[1].trainServices.service
 		except AttributeError:
-			textResponse = "There are no trains running at this station!"
-			return textResponse
+			textResponse = "There are no trains currently running at this station!"
+			return "<b>Departures from " + data[1].locationName + "</b>%0A--------------------------------%0A" + textResponse
 		else:
 			try:
 				for i in range(0, len(services)):
