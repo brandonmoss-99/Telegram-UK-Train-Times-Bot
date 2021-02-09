@@ -26,6 +26,7 @@ Required:
 `-r` or `--railtoken`: National Rail token to use for connection to the API.
 
 Optional:
+
 `-n` or `--next`: Max number of trains to fetch per update [1-10]
 
 `--help`: Display help
