@@ -12,10 +12,10 @@ See requirements.txt for additional dependencies
 To run the script, call it, passing in your Telegram bot token and National Rail API token:
 
 ```bash
-$ python3 bot.py [OPTIONS]...
+$ python3 src/bot.py [OPTIONS]...
 ```
 
-See also `python3 bot.py --help`.
+See also `python3 src/bot.py --help`.
 
 ### Options
 
