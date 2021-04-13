@@ -1,4 +1,4 @@
-import time, sys, getopt, requests, json, urllib, re, random
+import time, sys, getopt, requests, random
 from tMsgSender import tMsgSender
 from tMsgFetcher import tMsgFetcher
 from rMsgFetcher import rMsgFetcher
@@ -47,8 +47,8 @@ if __name__ == '__main__':
 				else:
 					print("Error validating your token!")
 					getHelp()
-			except:
-				print("Error trying to validate your token!")
+			except Exception as ex:
+				print("Error trying to validate your token!", ex)
 				getHelp()
 
 		if opt in ['-r', '--railtoken']:
