@@ -1,4 +1,4 @@
-import requests
+import requests, time, json
 from tMsgSender import tMsgSender
 
 class messageFetcher:
