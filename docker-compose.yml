@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+ tBot:
+  image: telegram-railtime-bot
+  container_name: tgRailTimeBot
+  volumes:
+   - .:/tBot
+  restart: unless-stopped
