@@ -20,7 +20,7 @@ build_job:
     - echo "export BUILD_JOB=$CI_JOB_ID" > build_job
   artifacts:
     paths:
-      - dist/main*
+      - dist/*
       - build_job
   rules:
    - if: $CI_COMMIT_TAG
