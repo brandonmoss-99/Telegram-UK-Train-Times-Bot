@@ -1,7 +1,7 @@
 appdirs==1.4.4
 attrs==22.1.0
 cached-property==1.5.2
-certifi==2022.6.15
+certifi==2022.6.15.1
 chardet==5.0.0
 charset-normalizer==2.1.1
 defusedxml==0.7.1
