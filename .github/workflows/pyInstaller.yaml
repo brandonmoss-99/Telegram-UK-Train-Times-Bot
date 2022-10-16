@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+# Stop any in-progress workflows if a newer job for that one starts
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   createLinuxExecutable:
     name: Create Linux Executable
