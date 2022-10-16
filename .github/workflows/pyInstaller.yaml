@@ -1,0 +1,49 @@
+name: Create Executables
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  createLinuxExecutable:
+    name: Create Linux Executable
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip' # cache pip dependencies
+      - run: pip install -r requirements.txt
+      - run: pip install pyinstaller
+      
+      - name: Build Executable
+        run: pyinstaller src/bot.py -F --distpath src/dist/linux/
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Linux release
+          path: src/dist/linux/*
+    
+  createWindowsExecutable:
+    name: Create Windows Executable
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip' # cache pip dependencies
+      - run: pip install -r requirements.txt
+      - run: pip install pyinstaller
+      
+      - name: Build Executable
+        run: pyinstaller src/bot.py -F --distpath src/dist/windows/
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Windows release
+          path: src/dist/windows/*
