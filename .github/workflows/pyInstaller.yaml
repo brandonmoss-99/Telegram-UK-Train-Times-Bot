@@ -27,7 +27,6 @@ jobs:
           name: Linux release
           path: src/dist/linux/*
 
-jobs:
   createMacOSExecutable:
     name: Create MacOS Executable
     runs-on: macos-latest
