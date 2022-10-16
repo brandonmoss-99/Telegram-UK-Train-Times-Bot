@@ -45,7 +45,7 @@ jobs:
       
       - uses: actions/upload-artifact@v3
         with:
-          name: Linux release
+          name: MacOS release
           path: src/dist/macos/*
     
   createWindowsExecutable:
