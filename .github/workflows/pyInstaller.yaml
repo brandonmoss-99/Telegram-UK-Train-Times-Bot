@@ -26,6 +26,28 @@ jobs:
         with:
           name: Linux release
           path: src/dist/linux/*
+
+jobs:
+  createMacOSExecutable:
+    name: Create MacOS Executable
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip' # cache pip dependencies
+      - run: pip install -r requirements.txt
+      - run: pip install pyinstaller
+      
+      - name: Build Executable
+        run: pyinstaller src/bot.py -F --distpath src/dist/macos/
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Linux release
+          path: src/dist/macos/*
     
   createWindowsExecutable:
     name: Create Windows Executable
