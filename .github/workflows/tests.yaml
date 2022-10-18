@@ -1,5 +1,7 @@
 name: Run tests
 
+on: push
+
 # Stop any in-progress workflows if a newer job for that one starts
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
