@@ -1,4 +1,4 @@
-import requests, time, json
+import requests, time, json, logging
 from tMsgSender import tMsgSender
 
 class messageFetcher:
@@ -20,7 +20,7 @@ class messageFetcher:
 			self.messagesParsed = json.loads(updateRequest[2])
 			return True
 		else:
-			print("timestamp:", int(time.time()), "Failed to fetch new messages!", updateRequest[2])
+			logging.warning(f"Failed to fetch new messages! {updateRequest[2]}")
 			return False
 
 	# loop through each parsed message stored in the messageFetcher

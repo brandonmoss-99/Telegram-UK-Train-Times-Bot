@@ -1,4 +1,4 @@
-import json
+import json, logging
 from tMsgSender import tMsgSender
 from tMsgTextParser import tMsgTextParser
 from rData import rData
@@ -21,6 +21,7 @@ class tMsgText:
 			textParse = self.tMsgTextParser.parseText(self.message['text'])
 			if textParse[0] == True:
 				# if valid, get train info for that train code
+				logging.info(f"Telegram id {self.chat['id']} sent \"{self.message['text']}\"")
 				trainInfo = self.rData.getData(textParse[1])
 				self.reply(trainInfo)
 			else:
@@ -28,6 +29,7 @@ class tMsgText:
 				self.reply(textParse)
 		else:
 			# what to say when a new person talks to the bot
+			logging.info(f"Telegram id {self.chat['id']} sent /start, sending initial msg")
 			newTextMessageRequest = self.tMsgSender.sendRequest(["sendMessage", "chat_id", self.chat['id'], "text", "Hi! Please send a 3 character station code to get started!"])
 
 	def getInfo(self):

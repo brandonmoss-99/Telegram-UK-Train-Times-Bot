@@ -1,4 +1,4 @@
-import json
+import json, logging
 from tMsgSender import tMsgSender
 from tMsgTextParser import tMsgTextParser
 from rData import rData
@@ -28,6 +28,7 @@ class tCallbackQuery:
 
 		if self.query_data[3:] == 'Refresh':
 			# have to respond with an answerCallbackQuery, otherwise the button stays on loading wheel
+			logging.info(f"{self.query_from['id']} pressed the Refresh button")
 			self.tMsgSender.sendRequest(["answerCallbackQuery", "callback_query_id", str(self.query_id) + 'answerSuccess'])
 			# edit message for new times
 			textParse = tMsgTextParser().parseText(self.query_data[:3])
@@ -39,6 +40,7 @@ class tCallbackQuery:
 
 		elif self.query_data[3:] == 'Notices':
 			# have to respond with an answerCallbackQuery, otherwise the button stays on loading wheel
+			logging.info(f"{self.query_from['id']} pressed the Notices button")
 			self.tMsgSender.sendRequest(["answerCallbackQuery", "callback_query_id", str(self.query_id) + 'answerSuccess'])
 
 			textParse = tMsgTextParser().parseText(self.query_data[:3])
@@ -49,6 +51,7 @@ class tCallbackQuery:
 
 		else:
 			# have to respond with an answerCallbackQuery, otherwise the button stays on loading wheel
+			logging.info(f"{self.query_id} pressed a different button")
 			self.tMsgSender.sendRequest(["answerCallbackQuery", "callback_query_id", str(self.query_id) + 'answerFail'])
 
 	def reply(self, data, queryType):
