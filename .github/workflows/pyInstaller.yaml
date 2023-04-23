@@ -1,75 +1,32 @@
-name: Create Executables
+name: Build
 
 on:
   push:
     branches:
-      - main
-
-# Stop any in-progress workflows if a newer job for that one starts
-concurrency: 
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+      - "main"
 
 jobs:
-  createLinuxExecutable:
-    name: Create Linux Executable
-    runs-on: ubuntu-latest
-
+  build:
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
         with:
-          python-version: '3.10'
-          cache: 'pip' # cache pip dependencies
-      - run: pip install -r requirements.txt
-      - run: pip install pyinstaller
-      
-      - name: Build Executable
-        run: pyinstaller src/bot.py -F --distpath src/dist/linux/
-      
-      - uses: actions/upload-artifact@v3
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Build and push
+        uses: docker/build-push-action@v4
         with:
-          name: Linux release
-          path: src/dist/linux/*
-
-  createMacOSExecutable:
-    name: Create MacOS Executable
-    runs-on: macos-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: 'pip' # cache pip dependencies
-      - run: pip install -r requirements.txt
-      - run: pip install pyinstaller
-      
-      - name: Build Executable
-        run: pyinstaller src/bot.py -F --distpath src/dist/macos/
-      
-      - uses: actions/upload-artifact@v3
-        with:
-          name: MacOS release
-          path: src/dist/macos/*
-    
-  createWindowsExecutable:
-    name: Create Windows Executable
-    runs-on: windows-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: 'pip' # cache pip dependencies
-      - run: pip install -r requirements.txt
-      - run: pip install pyinstaller
-      
-      - name: Build Executable
-        run: pyinstaller src/bot.py -F --distpath src/dist/windows/
-      
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Windows release
-          path: src/dist/windows/*
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/telegram-uk-train-times-bot:latest

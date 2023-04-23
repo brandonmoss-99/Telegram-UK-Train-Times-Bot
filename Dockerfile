@@ -1,7 +1,8 @@
-# syntax=docker/dockerfile:1
+FROM python:3.11.3-slim-buster
 
-# Inherit the Python 3 docker image
-FROM python:3
+LABEL org.opencontainers.image.source=https://github.com/brandonmoss-99/Telegram-UK-Train-Times-Bot
+
+RUN apt-get update && apt-get install tini
 
 # Create a working directory. Instruct Docker to use this path as the default
 # location for all subsequent commands. Don't have to type full filepaths anymore,
@@ -15,8 +16,6 @@ COPY requirements.txt requirements.txt
 # Execute pip3 install of required dependencies
 RUN pip3 install -r requirements.txt
 
-# Add all source code into the image (. . = current directory to workspace directory)
-#COPY . .
+COPY ./src ./src
 
-# Tell docker to run command
-CMD exec python -u src/bot.py -t <TELEGRAM_TOKEN> -r <RAIL_TOKEN> >> output.log
+ENTRYPOINT [ "/usr/bin/tini", "--", "python", "src/bot.py" ]
