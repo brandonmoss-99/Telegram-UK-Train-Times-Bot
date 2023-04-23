@@ -1,8 +1,14 @@
 version: '3.7'
 services:
  tBot:
-  image: telegram-railtime-bot
+  image: brandonmoss99/telegram-uk-train-times-bot
   container_name: tgRailTimeBot
   volumes:
    - .:/tBot
   restart: unless-stopped
+  environment:
+    # Use environment variables defined in a .env file
+    - T_TOKEN=${T_TOKEN}
+    - RAIL_TOKEN=${RAIL_TOKEN}
+    - NEXT_TRAINS_COUNT=${NEXT_TRAINS_COUNT}
+    - CACHE_TIME=${CACHE_TIME}
