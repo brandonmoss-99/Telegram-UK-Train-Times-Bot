@@ -9,7 +9,7 @@ idna==3.4
 isodate==0.6.1
 lxml==4.9.3
 platformdirs==3.10.0
-pytz==2023.3
+pytz==2023.3.post1
 requests==2.31.0
 requests-file==1.5.1
 requests-toolbelt==1.0.0
