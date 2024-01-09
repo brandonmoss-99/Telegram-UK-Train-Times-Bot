@@ -1,4 +1,4 @@
-FROM python:3.11.4-slim-buster
+FROM python:3.12.1-slim-bookworm
 
 LABEL org.opencontainers.image.source=https://github.com/brandonmoss-99/Telegram-UK-Train-Times-Bot
 
