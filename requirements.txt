@@ -11,7 +11,7 @@ lxml==5.2.2
 platformdirs==4.2.2
 pytz==2024.1
 requests==2.32.1
-requests-file==2.0.0
+requests-file==2.1.0
 requests-toolbelt==1.0.0
 six==1.16.0
 urllib3==2.2.1
