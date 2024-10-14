@@ -3,7 +3,7 @@ attrs==24.2.0
 cached-property==1.5.2
 certifi==2024.8.30
 chardet==5.2.0
-charset-normalizer==3.3.2
+charset-normalizer==3.4.0
 defusedxml==0.7.1
 idna==3.10
 isodate==0.6.1
