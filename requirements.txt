@@ -1,6 +1,6 @@
 appdirs==1.4.4
 attrs==24.2.0
-cached-property==1.5.2
+cached-property==2.0.1
 certifi==2024.8.30
 chardet==5.2.0
 charset-normalizer==3.4.0
