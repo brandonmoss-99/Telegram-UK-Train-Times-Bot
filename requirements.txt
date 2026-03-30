@@ -2,7 +2,7 @@ appdirs==1.4.4
 attrs==25.4.0
 cached-property==2.0.1
 certifi==2026.2.25
-chardet==5.2.0
+chardet==7.4.0.post2
 charset-normalizer==3.4.5
 defusedxml==0.7.1
 idna==3.11
