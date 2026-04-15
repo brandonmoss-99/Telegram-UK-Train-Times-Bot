@@ -8,7 +8,7 @@ defusedxml==0.7.1
 idna==3.11
 isodate==0.7.2
 lxml==6.0.4
-platformdirs==4.9.4
+platformdirs==4.9.6
 pytz==2026.1.post1
 requests==2.33.1
 requests-file==3.0.1
