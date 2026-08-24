@@ -7,7 +7,7 @@ charset-normalizer==3.5.0
 defusedxml==0.7.1
 idna==3.18
 isodate==0.7.2
-lxml==6.1.1
+lxml==6.1.2
 platformdirs==4.11.3
 pytz==2026.3.post1
 requests==2.34.2
